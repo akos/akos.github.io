@@ -49,7 +49,7 @@ module.exports = {
                 title: 'API',
                 collapsable: false,
                 children: [
-                    ['local', '本地部署'],
+                    // ['local', '本地部署'],
                 ],
             }],
             '/articles/': [{

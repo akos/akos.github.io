@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Node.js的基本运行原理 | Akos</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.31b1a281.css" as="style"><link rel="preload" href="/assets/js/app.41e1f831.js" as="script"><link rel="preload" href="/assets/js/2.ac7495f8.js" as="script"><link rel="preload" href="/assets/js/8.3efe017f.js" as="script"><link rel="prefetch" href="/assets/js/10.581d793b.js"><link rel="prefetch" href="/assets/js/11.9a0f8031.js"><link rel="prefetch" href="/assets/js/12.a0956ca9.js"><link rel="prefetch" href="/assets/js/13.f25caf73.js"><link rel="prefetch" href="/assets/js/14.55d62c09.js"><link rel="prefetch" href="/assets/js/15.bd048caf.js"><link rel="prefetch" href="/assets/js/16.d0ebe7fc.js"><link rel="prefetch" href="/assets/js/17.8544ce8a.js"><link rel="prefetch" href="/assets/js/18.2d8c7df5.js"><link rel="prefetch" href="/assets/js/19.274b623a.js"><link rel="prefetch" href="/assets/js/20.b008ff2a.js"><link rel="prefetch" href="/assets/js/3.3b637b5a.js"><link rel="prefetch" href="/assets/js/4.e15508bd.js"><link rel="prefetch" href="/assets/js/5.030c8f52.js"><link rel="prefetch" href="/assets/js/6.c801fe55.js"><link rel="prefetch" href="/assets/js/7.1d4a5b73.js"><link rel="prefetch" href="/assets/js/9.c6b8ad5c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.31b1a281.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Akos</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">指南</a></div><div class="nav-item"><a href="/api/" class="nav-link">API</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">相关教程</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://knexjs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Knex.js
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://bookshelfjs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Bookshelf.js
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><a href="/articles/" class="nav-link router-link-active">技术文章</a></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  发布日志
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">语言</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/chinese/" class="nav-link">中文</a></li><li class="dropdown-item"><!----> <a href="/language/english/" class="nav-link">English</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">指南</a></div><div class="nav-item"><a href="/api/" class="nav-link">API</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">相关教程</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://knexjs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Knex.js
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="https://bookshelfjs.org" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Bookshelf.js
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div><div class="nav-item"><a href="/articles/" class="nav-link router-link-active">技术文章</a></div><div class="nav-item"><a href="https://google.com" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  发布日志
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">语言</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/language/chinese/" class="nav-link">中文</a></li><li class="dropdown-item"><!----> <a href="/language/english/" class="nav-link">English</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first"><p class="sidebar-heading open"><span>技术文章</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/articles/basic-principle-of-nodejs.html" class="active sidebar-link">Node.js 的基本运行原理</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/articles/event-loop.html" class="sidebar-link">Event Loop 事件循环机制</a></li><li><a href="/articles/what-is-nodejs.html" class="sidebar-link">What is Node.js?（转载）</a></li></ul></div></li></ul> </div> <div class="page"> <div class="content default"><h1 id="node-js的基本运行原理"><a href="#node-js的基本运行原理" aria-hidden="true" class="header-anchor">#</a> Node.js的基本运行原理</h1> <h3 id="node-js文件目录"><a href="#node-js文件目录" aria-hidden="true" class="header-anchor">#</a> Node.js文件目录</h3> <pre><code>.
+├── ...
+├── deps
+│   ├── ...
+│   ├── v8
+│   ├── ...
+├── ...
+├── lib
+│   ├── ...
+│   ├── buffer.js
+│   ├── child_process.js
+│   ├── console.js
+│   ├── ...
+├── node -&gt; out/Release/node
+├── ...
+├── out
+│   ├── ...
+│   ├── Release
+|         ├── node
+|         ├── node.d
+|         ├── obj
+|             └── gen
+|                 ├── ...
+|                 ├── node_natives.h
+|                 ├── ...
+│   ├── ...
+├── src
+│   ├── ...
+│   ├── debug-agent.cc
+│   ├── debug-agent.h
+│   ├── env-inl.h
+│   ├── env.cc
+│   ├── ...
+├──
+...
+</code></pre> <p>需要关注的几个目录和文件：</p> <p>/deps/v8：这里是V8源码所在文件夹，你会发现里面的目录结构跟V8源码十分相似。NodeJS除了移植V8源码，还在增添了一些内容。</p> <p>/src：由C/C++编写的核心模块所在文件夹，由C/C++编写的这部分模块被称为「Builtin Module」</p> <p>/lib：由JavaScript编写的核心模块所在文件夹，这部分被称为「Native Code」，在编译Node源码的时候，会采用V8附带的js2c.py工具，把所有内置的JavaScript代码转换成C++里面的数组，生成out/Release/obj/gen/node_natives.h文件。有些 Native Module 需要借助于 Builtin Module 实现背后的功能。</p> <p>/out：该目录是Node源码编译(即命令行运行make)后生成的目录，里面包含了Node的可执行文件。当在命令行中键入node xxx.js，实际就是运行了out/Release/node文件。
+![](/assets/popo_2018-08-28  19-59-37.jpg)</p> <p>Node在<strong>启动</strong>的时候，就已经<strong>把 Native Module，Builtin Module 加载到内存里面了</strong>，这样可以供全局使用。后来的 JavaScript 代码，就需要通过 V8 进行动态编译解析运行。</p> <p>V8 作为一个 JavaScript 引擎，最初是服役于 Google Chrome 浏览器的。它随着 Chrome 的第一版发布而发布以及开源。现在它除了 Chrome 浏览器，已经有很多其他的使用者了。诸如 NodeJS、MongoDB、CouchDB 等。</p> <p>JavaScript 作为 Prototype-Based Language , 基于它使用 Prototype 继承的特征，V8 使用了直译的方式，即把 JavaScript 代码直接编译成机器码( Machine Code, 有些地方也叫 Native Code )，然后直接交由硬件执行。
+与传统的「编译-解析-执行」的流程不同，V8 处理 JavaScript，初期时并没有二进制码或其他的中间码，到<strong>2017年上旬引入中间字节码的概念</strong>。</p> <p>简单来说，V8主要工作就是：「把 JavaScript 直译成机器码，然后运行」
+但这中间，往往是一个复杂的过程，它需要处理很多的难题，诸如：</p> <pre><code>    1.编译优化
+    2.内存管理
+    3.垃圾回收
+</code></pre> <h3 id="c-c-编写的核心模块，调用方法基本运行原理"><a href="#c-c-编写的核心模块，调用方法基本运行原理" aria-hidden="true" class="header-anchor">#</a> C/C++编写的核心模块，调用方法基本运行原理</h3> <pre><code>#include &quot;v8.h&quot;
+#include &lt;string.h&gt;
+#include &lt;stdio.h&gt;
+
+using namespace v8;
+using namespace std;
+
+Handle&lt;Value&gt; Hi(const Arguments&amp; args) {
+    HandleScope  handle_scope;
+    char buffer[4096];
+
+    memset(buffer, 0, sizeof(buffer));
+    Handle&lt;String&gt; str = args[0]-&gt;ToString();
+    str-&gt;WriteAscii(buffer);
+    printf(&quot;Yell: %s\n&quot;, buffer);
+
+    return Undefined();
+}
+
+int main(int argc, char** argv) {
+    HandleScope handle_scope;
+
+    //定义一个FunctionTempte并与C++函数绑定
+    Handle&lt;FunctionTemplate&gt; fun = FunctionTemplate::New(Hi);
+    //定义一个ObectTemplate，并向该对象注册一个FunctionTemplate
+    Handle&lt;ObjectTemplate&gt; global = ObjectTemplate::New();
+    global-&gt;Set(String::New(&quot;Hi&quot;), fun);
+    //将该对象注册到JS的global中去
+    Persistent&lt;Context&gt; cxt = Context::New(NULL, global);
+
+    Context::Scope context_scope(cxt);
+    Handle&lt;String&gt; source = String::New(&quot;Hi('Hi V8!')&quot;);
+    Handle&lt;Script&gt; script = Script::Compile(source);
+    Handle&lt;Value&gt; result = script-&gt;Run();
+
+    cxt.Dispose();
+}
+</code></pre> <div class="language- extra-class"><pre class="language-text"><code>using namespace v8;
+
+int main(int argc, char* argv[]) {
+  // Get the default Isolate created at startup.
+  Isolate* isolate = Isolate::GetCurrent();
+
+  // Create a stack-allocated handle scope.
+  HandleScope handle_scope(isolate);
+
+  // Create a new context.
+  Handle&lt;Context&gt; context = Context::New(isolate);
+
+  // Here's how you could create a Persistent handle to the context, if needed.
+  Persistent&lt;Context&gt; persistent_context(isolate, context);
+
+  // Enter the created context for compiling and
+  // running the hello world script.
+  Context::Scope context_scope(context);
+
+  // 创建一个js的字符串的文件
+  Handle&lt;String&gt; source = String::New(&quot;'Hello' + ', World!'&quot;);
+
+  // 编译原文件
+  Handle&lt;Script&gt; script = Script::Compile(source);
+
+  // 运行Js得到返回结果.
+  Handle&lt;Value&gt; result = script-&gt;Run();
+
+  // The persistent handle needs to be eventually disposed.
+  persistent_context.Dispose();
+
+  // Convert the result to an ASCII string and print it.
+  String::AsciiValue ascii(result);
+  printf(&quot;%s\n&quot;, *ascii);
+  return 0;
+</code></pre></div></div> <!----> <!----> </div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.41e1f831.js" defer></script><script src="/assets/js/2.ac7495f8.js" defer></script><script src="/assets/js/8.3efe017f.js" defer></script>
+  </body>
+</html>
