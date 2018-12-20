@@ -1,8 +1,8 @@
 # 中间件开发和使用
 ## Akos中间件继承Koa中间件的理念
-- koa v1和v2中使用到的中间件的开发和使用
-- generator 中间件开发在koa v1和v2中使用
-- async await 中间件开发和只能在koa v2中使用
+- akos v1和v2中使用到的中间件的开发和使用
+- generator 中间件开发在akos v1和v2中使用
+- async await 中间件开发和只能在akos v2中使用
 
 ## generator中间件开发
 
