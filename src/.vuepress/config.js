@@ -21,8 +21,8 @@ module.exports = {
                 title: '介绍',
                 collapsable: false,
                 children: [
-                    ['what-is-akos', 'Akos 是什么？'],
-                    ['akos-&-koa', 'Akos 和 Koa'],
+                    ['what-is-akos', 'Akos.js 是什么？'],
+                    ['akos-&-koa', 'Akos.js 和 Koa'],
                     ['quickstart', '快速开始'],
                 ],
             }, {
@@ -33,6 +33,7 @@ module.exports = {
                     ['configuration', '配置'],
                     ['environment', '运行环境'],
                     ['router', 'Router'],
+                    ['middleware', '中间件'],
                 ],
             }, {
                 title: '核心功能',
