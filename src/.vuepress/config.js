@@ -31,6 +31,7 @@ module.exports = {
                     ['structure', '目录结构'],
                     ['configuration', '配置'],
                     ['environment', '运行环境'],
+                    ['router', '路由'],
                 ],
             }, {
                 title: '核心功能',
@@ -58,7 +59,8 @@ module.exports = {
                 children: [
                     ['basic-principle-of-nodejs', 'Node.js 的基本运行原理'],
                     ['event-loop', 'Event Loop 事件循环机制'],
-                    ['what-is-nodejs', 'What is Node.js?（转载）'],
+                    ['what-is-nodejs', 'What is Node.js?'],
+                    ['cluster-introduce', 'Cluster浅析'],
                 ],
             }],
           }

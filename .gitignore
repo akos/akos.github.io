@@ -31,3 +31,4 @@ public/
 lib-cov
 coverage
 .nyc_output
+src/.vuepress/dist/
