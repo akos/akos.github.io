@@ -6,33 +6,32 @@ akos-project
 ├── apps.config.js (PM2启动配置，可选)
 ├── akos.config.js (Akos启动配置)
 ├── public
-├── test(测试目录)
-└── src
-    ├── client (前端目录)
-    │   ├── assets
-    │   ├── components
-    │   ├── pages
-    │   ├── services
-    │   ├── static
-    │   ├── utils
-    │   └── views
-    ├── config (项目配置参数)
-    │   ├── default.js(默认配置)
-    │   └── index.js(入口文件)
-    ├── server (后端目录)
-    │   ├── `controller`(控制层)
-    │   ├── `middleware`(中间件)
-    │   │    └── `auth`(权限控制)
-    │   ├── `model`(数据模型层)
-    │   │    ├── db.js(连接管理)
-    │   │    └── index.js (模型关联，可拆分)
-    │   ├── `plugin`(独立插件)
-    │   ├── `router`(路由层)
-    │   │    └── index.js (主路由)
-    │   ├── `schedule`(定时任务)
-    │   ├── `service`（实现层）
-    │   ├── `utils`(通用单元)
-    │   └── app.js(主入口文件)
-    └── shared (前后端共享目录)
-
+├── src
+│   ├── client (前端目录)
+│   │   ├── assets
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── services
+│   │   ├── static
+│   │   ├── utils
+│   │   └── views
+│   ├── config (项目配置参数)
+│   │   ├── default.js(默认配置)
+│   │   └── index.js(入口文件)
+│   ├── server (后端目录)
+│   │   ├── `controller`(控制层)
+│   │   ├── `middleware`(中间件)
+│   │   │    └── `auth`(权限控制)
+│   │   ├── `model`(数据模型层)
+│   │   │    ├── db.js(连接管理)
+│   │   │    └── index.js (模型关联，可拆分)
+│   │   ├── `plugin`(独立插件)
+│   │   ├── `router`(路由层)
+│   │   │    └── index.js (主路由)
+│   │   ├── `schedule`(定时任务)
+│   │   ├── `service`（实现层）
+│   │   ├── `utils`(通用单元)
+│   │   └── app.js(主入口文件)
+│   └── shared (前后端共享目录)
+└──test(测试目录)
 :::

@@ -1,7 +1,6 @@
 
 # Cluster浅析
 
-
 ### 背景
 众所周知，Node.js是单线程的，一个单独的Node.js进程无法充分利用多核。Node.js从v0.8开始，新增cluster模块，让Node.js开发Web服务时，很方便的做到充分利用多核机器。
 
@@ -232,4 +231,3 @@ function listen(self, address, port, addressType, backlog, fd, exclusive) {
 ### 总结
 
 
-### 参考

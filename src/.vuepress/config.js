@@ -15,6 +15,7 @@ module.exports = {
                 { text: 'English', link: '/language/english/' },
             ] },
         ],
+        sidebarDepth: 0,
         sidebar: {
             '/guide/': [{
                 title: '介绍',
@@ -31,7 +32,7 @@ module.exports = {
                     ['structure', '目录结构'],
                     ['configuration', '配置'],
                     ['environment', '运行环境'],
-                    ['router', '路由'],
+                    ['router', 'Router'],
                 ],
             }, {
                 title: '核心功能',
