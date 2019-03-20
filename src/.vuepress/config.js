@@ -40,7 +40,7 @@ module.exports = {
                     ['logger', '日志(Logger)'],
                     ['exception', '异常(Exception)'],
                     ['schedule', '定时机制(Schedule)'],
-                    ['plugin', '插件(plugin)'],
+                    ['plugin', '插件(Plugin)'],
                 ],
             }, {
                 title: '拓展功能',
