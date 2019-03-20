@@ -66,7 +66,7 @@ Demo功能: 实在通过请求路径/page/home，获取home page资源
 │   │   └── app.js(项目入口)
 :::
 #### Controller层说明
-前提：Controller层实现请求路径绑定的方法
+Controller层实现请求路径绑定的方法
 ##### src/server/controller/home/index.js
 ``` js
 // home首页

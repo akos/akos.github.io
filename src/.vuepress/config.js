@@ -5,15 +5,15 @@ module.exports = {
             { text: '指南', link: '/guide/' },
             { text: 'API', link: '/api/' },
             { text: '相关教程', items: [
-                { text: 'Knex.js', link: 'https://knexjs.org' },
-                { text: 'Bookshelf.js', link: 'https://bookshelfjs.org' },
-            ] },
+                    { text: 'Knex.js', link: 'https://knexjs.org' },
+                    { text: 'Bookshelf.js', link: 'https://bookshelfjs.org' },
+                ] },
             { text: '技术文章', link: '/articles/' },
             { text: '发布日志', link: 'https://google.com' },
             { text: '语言', items: [
-                { text: '中文', link: '/language/chinese/' },
-                { text: 'English', link: '/language/english/' },
-            ] },
+                    { text: '中文', link: '/language/chinese/' },
+                    { text: 'English', link: '/language/english/' },
+                ] },
         ],
         sidebarDepth: 0,
         sidebar: {
@@ -30,16 +30,34 @@ module.exports = {
                 collapsable: false,
                 children: [
                     ['structure', '目录结构'],
-                    ['configuration', '配置'],
+                    ['configuration', '配置(Config)'],
                     ['environment', '运行环境'],
-                    ['router', 'Router'],
-                    ['middleware', '中间件'],
+                    ['app', '应用(App)'],
+                    ['router', '路由(Router)'],
+                    ['middleware', '中间件(middleware)'],
+                    ['controller', '接口(Controller)'],
+                    ['model', '数据层(Model)'],
+                    ['config', '配置(Config)'],
+                    ['logger', '日志(Logger)'],
+                    ['exception', '异常(Exception)'],
+                    ['schedule', '定时机制(Schedule)'],
+                    ['plugin', '插件(plugin)'],
                 ],
             }, {
-                title: '核心功能',
+                title: '拓展功能',
                 collapsable: false,
                 children: [
                     ['local', '本地部署'],
+                    ['pm2', 'PM2使用'],
+                    ['view', '模板渲染'],
+                    ['ipc', 'IPC通信'],
+                    ['mysql', 'MySQL操作'],
+                    ['mongodb', 'mongodb操作'],
+                    ['mq', 'MQ操作'],
+                    ['redis', 'Redis操作'],
+                    ['db-migrate', 'db-migrate操作'],
+                    ['jest', 'jest单元测试'],
+                    ['swagger', 'Swagger使用'],
                 ],
             }, {
                 title: '进阶',
@@ -65,6 +83,6 @@ module.exports = {
                     ['cluster-introduce', 'Cluster浅析'],
                 ],
             }],
-          }
+        }
     }
 }

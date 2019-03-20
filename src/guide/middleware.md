@@ -45,7 +45,7 @@ app.use(function *( ) {
 })
 
 app.listen(8000)
-console.log('the server is starting at port 8000')
+console.log('Server listen on 8000')
 ```
 
 ### generator中间件在koa@2中的使用
@@ -64,7 +64,7 @@ app.use(( ctx ) => {
 })
 
 app.listen(8000)
-console.log('the server is starting at port 8000')
+console.log('Server listen on 8000')
 ```
 
 
