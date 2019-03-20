@@ -26,8 +26,7 @@ akos-project
 │   │   │    ├── db.js(连接管理)
 │   │   │    └── index.js (模型关联，可拆分)
 │   │   ├── `plugin`(独立插件)
-│   │   ├── `schedule`(定时任务)
-│   │   │      
+│   │   ├── `schedule`(定时任务) 
 │   │   ├── `router`(路由层)
 │   │   │    └── index.js (主路由)
 │   │   ├── `service`（实现层）
