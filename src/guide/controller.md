@@ -1,4 +1,5 @@
-接口层(Controller)，承载了定义接口的角色，通过对服务(Service)的组合，封装出具体的业务接口。
+# 接口(Controller) 
+接口(Controller)，承载了定义接口的角色，通过对服务(Service)的组合，封装出具体的业务接口。
 ## 如何编写Controller
 我们首先定义一个接口，如:
 
@@ -30,7 +31,6 @@ module.exports = {
     }
 }
 ```
-
 如参数name为akos，则返回hello akos
 
 ## 如何结合Service
