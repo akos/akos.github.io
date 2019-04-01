@@ -33,6 +33,6 @@ module.exports = {
 
 如参数name为akos，则返回hello akos
 
-## 如何联系Service
+## 如何结合Service
 
 
