@@ -51,8 +51,54 @@ app.listen(8000, () => {
 })
 
 ```
-## Akos内Router使用简要说明
-### 用法一，原生用法
+## Akos内Router使用举例说明
+### 用法一，Akos router
+## Install
+
+``` shell
+npm i --save akos-router
+```
+
+## Example
+
+``` js
+const AkosRouter = require('akos-router');
+
+const routes = [
+    { path: '/', controller: 'home', action: 'index' },
+    { path: '/api', directory: 'api', children: [
+        { path: 'vpc', controller: 'vpc', children: [
+            { path: '', action: 'getList' },
+            { path: ':id', method: 'get', action: 'getOne' },
+            { path: ':id', method: 'post', action: 'addOne' },
+            { path: ':id', method: 'put', action: 'updateOne' },
+            { path: 'snapshot', action: 'getSnapshot' },
+            { path: 'volume', action: (ctx, next) => { /* something */ } },
+        ] },
+        { path: 'account', use: [...middlewares] },
+    ] },
+    { path: '/login', redirect: '/sign-in' },
+];
+
+const router = new AkosRouter(routes);
+app.use(router.middleware());
+```
+
+``` js
+const routes = [
+    '/ => home#index',
+    { path: '/api', directory: 'api', children: [
+        { path: 'vpc', controller: 'vpc', children: [
+            '=> getList',
+            'get :id => #getOne',
+            'post :id => #addOne',
+            'put :id => #updateOne',
+            'snapshot => getSnapshot',
+        ] },
+    ] },
+];
+```
+### 用法二，原生用法
 Demo功能: 实在通过请求路径/page/home，获取home page资源
 #### Demo目录结构
 ::: vue
@@ -102,50 +148,4 @@ router.get(`/home`, homeController.index);//请求路径继承父级，生成/pa
 module.exports = router;
 ```
 
-### 用法二，Akos router
 
-## Install
-
-``` shell
-npm i --save akos-router
-```
-
-## Example
-
-``` js
-const AkosRouter = require('akos-router');
-
-const routes = [
-    { path: '/', controller: 'home', action: 'index' },
-    { path: '/api', directory: 'api', children: [
-        { path: 'vpc', controller: 'vpc', children: [
-            { path: '', action: 'getList' },
-            { path: ':id', method: 'get', action: 'getOne' },
-            { path: ':id', method: 'post', action: 'addOne' },
-            { path: ':id', method: 'put', action: 'updateOne' },
-            { path: 'snapshot', action: 'getSnapshot' },
-            { path: 'volume', action: (ctx, next) => { /* something */ } },
-        ] },
-        { path: 'account', use: [...middlewares] },
-    ] },
-    { path: '/login', redirect: '/sign-in' },
-];
-
-const router = new AkosRouter(routes);
-app.use(router.middleware());
-```
-
-``` js
-const routes = [
-    '/ => home#index',
-    { path: '/api', directory: 'api', children: [
-        { path: 'vpc', controller: 'vpc', children: [
-            '=> getList',
-            'get :id => #getOne',
-            'post :id => #addOne',
-            'put :id => #updateOne',
-            'snapshot => getSnapshot',
-        ] },
-    ] },
-];
-```
