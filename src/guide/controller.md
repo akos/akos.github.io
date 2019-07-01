@@ -7,6 +7,7 @@
 module.exports = {
     async HelloController(ctx) {
         // 业务处理
+        //...
     }
 }
 ```
@@ -23,10 +24,15 @@ module.exports = {
 如需要根据传参进行区分处理，如Router层定义GET接口/hello，传入参数name（路由配置请参考Router层介绍）
 
 ```js
-GET /hello 参数name
+/*
+ @method GET 
+ @path /hello 
+ @param {string} name
+*/
 module.exports = {
     async HelloController(ctx) {
-     const name = ctx.request.query.name//参考中间件bodyParsePath
+     //GET方法传参，可在ctx.request.query中获得，参考中间件bodyParsePath定义
+     const name = ctx.request.query.name
       ctx.body(`hello ${name}`);
     }
 }
@@ -34,5 +40,7 @@ module.exports = {
 如参数name为akos，则返回hello akos
 
 ## 如何结合Service
+假设有有文件src/server/user.js
+
 
 
