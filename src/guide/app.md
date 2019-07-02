@@ -50,7 +50,7 @@ module.exports = (options) => {
     log.important('全局监听错误初始化完成');
     // 日志
     app.use(bunyanLogger({
-        name: 'icp_v4',
+        name: 'akos-app',
     }));
     app.use(bunyanLogger.requestIdContext());
     app.use(bunyanLogger.requestLogger());
