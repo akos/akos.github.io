@@ -53,16 +53,15 @@ console.log('This should be eight:', addon.add(3, 5));
 ```
 ### 顺序执行执行命令
 
-    ```
+```
 1.node-gyp configure 
 2.node-gyp build
 3.node add.js
-
 ```
 
 ### 执行结果
 
-    ```
+```
 This should be eight: 8
 ```
 
