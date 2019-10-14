@@ -4,16 +4,21 @@ module.exports = {
         nav: [
             { text: '指南', link: '/guide/' },
             { text: 'API', link: '/api/' },
-            { text: '相关教程', items: [
+            {
+                text: '相关教程', items: [
+                    { text: 'egg.js', link: 'https://eggjs.org/zh-cn/intro/' },
                     { text: 'Knex.js', link: 'https://knexjs.org' },
                     { text: 'Bookshelf.js', link: 'https://bookshelfjs.org' },
-                ] },
+                ]
+            },
             { text: '技术文章', link: '/articles/' },
             { text: '发布日志', link: 'https://google.com' },
-            { text: '语言', items: [
+            {
+                text: '语言', items: [
                     { text: '中文', link: '/language/chinese/' },
                     { text: 'English', link: '/language/english/' },
-                ] },
+                ]
+            },
         ],
         sidebarDepth: 0,
         sidebar: {
@@ -22,7 +27,7 @@ module.exports = {
                 collapsable: false,
                 children: [
                     ['what-is-akos', 'Akos.js 是什么？'],
-                    ['akos-&-koa', 'Akos.js 和 Koa'],
+                    ['akos-&-koa&-egg', 'Akos,Koa,Egg三者的渊源'],
                     ['quickstart', '快速开始'],
                 ],
             }, {
@@ -43,28 +48,38 @@ module.exports = {
                     ['plugin', '插件(Plugin)'],
                 ],
             }, {
-                title: '拓展功能',
+                title: '基于Egg模板后台开发手册',
                 collapsable: false,
                 children: [
-                    ['local', '服务部署'],
-                    ['pm2', 'PM2使用'],
-                    ['view', '模板渲染'],
-                    ['ipc', 'IPC通信'],
-                    ['mysql', 'MySQL操作'],
-                    ['mongodb', 'mongodb操作'],
-                    ['mq', 'MQ操作'],
-                    ['redis', 'Redis操作'],
-                    ['db-migrate', 'db-migrate操作'],
-                    ['jest', 'jest单元测试'],
-                    ['swagger', 'Swagger使用'],
+                    ['egg-redis', 'Redis缓存'],
+                    ['egg-lru', 'Lru缓存'],
                 ],
-            }, {
-                title: '进阶',
-                collapsable: false,
-                children: [
-                    ['best-practice', '最佳实践'],
-                ],
-            }],
+            },
+                {
+                    title: '基于Koa模板后台开发手册',
+                    collapsable: false,
+                    children: [
+                        ['pm2', 'PM2使用'],
+                        ['view', '模板渲染'],
+                        ['ipc', 'IPC通信'],
+                        ['mysql', 'MySQL操作'],
+                        ['mongodb', 'mongodb操作'],
+                        ['mq', 'MQ操作'],
+                        ['redis', 'Redis缓存'],
+                        ['db-migrate', 'db-migrate操作'],
+                        ['jest', 'jest单元测试'],
+                        ['swagger', 'Swagger使用'],
+                    ],
+                },
+                {
+                    title: '进阶',
+                    collapsable: false,
+                    children: [
+                        ['local', 'NDP服务部署'],
+                        ['jsUseC', 'Js使用调用C/C++举例'],
+                        ['best-practice', '最佳实践'],
+                    ],
+                }],
             '/api/': [{
                 title: 'API',
                 collapsable: false,

@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[13],{180:function(t,s,e){"use strict";e.r(s);var o=e(18),n=Object(o.a)({},function(){var t=this.$createElement,s=this._self._c||t;return s("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}},[s("p",[this._v("Akos 和 Koa")])])},[],!1,null,null,null);n.options.__file="akos-&-koa&-egg.md";s.default=n.exports}}]);
