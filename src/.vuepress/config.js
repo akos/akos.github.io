@@ -2,7 +2,11 @@ module.exports = {
     title: 'Akos',
     themeConfig: {
         nav: [
-            { text: '指南', link: '/guide/' },
+            {
+                text: '指南', items: [
+                    { text: 'Koa', link: '/koa/' },
+                    { text: 'Egg', link: '/egg/egg-doc' }]
+            },
             { text: 'API', link: '/api/' },
             {
                 text: '相关教程', items: [
@@ -20,42 +24,35 @@ module.exports = {
                 ]
             },
         ],
-        sidebarDepth: 0,
+        sidebarDepth: 1,
         sidebar: {
-            '/guide/': [{
-                title: '介绍',
-                collapsable: false,
-                children: [
-                    ['what-is-akos', 'Akos.js 是什么？'],
-                    ['akos-&-koa&-egg', 'Akos,Koa,Egg三者的渊源'],
-                    ['quickstart', '快速开始'],
-                ],
-            }, {
-                title: '基本功能',
-                collapsable: false,
-                children: [
-                    ['structure', '目录结构'],
-                    ['config', '配置(Config)'],
-                    ['app', '应用(App)'],
-                    ['router', '路由(Router)'],
-                    ['middleware', '中间件(Middleware)'],
-                    ['controller', '接口(Controller)'],
-                    ['model', '数据层(Model)'],
-                    //['service', '服务(Service)'],
-                    ['logger', '日志(Logger)'],
-                    //['exception', '异常(Exception)'],
-                    ['schedule', '定时机制(Schedule)'],
-                    ['plugin', '插件(Plugin)'],
-                ],
-            }, {
-                title: '基于Egg模板后台开发手册',
-                collapsable: false,
-                children: [
-                    ['egg-redis', 'Redis缓存'],
-                    ['egg-lru', 'Lru缓存'],
-                ],
-            },
+            '/koa/': [
                 {
+                    title: '介绍',
+                    collapsable: false,
+                    children: [
+                        ['what-is-akos', 'Akos.js 是什么？'],
+                        // ['akos-&-koa-&-egg', 'Akos,Koa和Egg的渊源'],
+                        // ['quickstart', '快速开始'],
+                    ],
+                }, {
+                    title: '基本功能',
+                    collapsable: false,
+                    children: [
+                        ['structure', '目录结构'],
+                        ['config', '配置(Config)'],
+                        ['app', '应用(App)'],
+                        ['router', '路由(Router)'],
+                        ['middleware', '中间件(Middleware)'],
+                        ['controller', '接口(Controller)'],
+                        ['model', '数据层(Model)'],
+                        ['service', '服务(Service)'],
+                        ['logger', '日志(Logger)'],
+                        //['exception', '异常(Exception)'],
+                        ['schedule', '定时机制(Schedule)'],
+                        ['plugin', '插件(Plugin)'],
+                    ],
+                }, {
                     title: '基于Koa模板后台开发手册',
                     collapsable: false,
                     children: [
@@ -65,7 +62,8 @@ module.exports = {
                         ['mysql', 'MySQL操作'],
                         ['mongodb', 'mongodb操作'],
                         ['mq', 'MQ操作'],
-                        ['redis', 'Redis缓存'],
+                        ['koa-redis', 'Redis缓存'],
+                        ['koa-lru', 'Lru本地缓存'],
                         ['db-migrate', 'db-migrate操作'],
                         ['jest', 'jest单元测试'],
                         ['swagger', 'Swagger使用'],
@@ -80,6 +78,27 @@ module.exports = {
                         ['best-practice', '最佳实践'],
                     ],
                 }],
+            sidebarDepth: 0,
+            '/egg/': [
+                {
+                    title: 'Egg基础功能',
+                    collapsable: false,
+                    children: [
+                        ['egg-doc','egg概要'],
+                    ],
+                },
+                {
+                    title: '基于Egg模板后台开发手册',
+                    collapsable: false,
+                    children: [
+                        ['egg-redis', 'Redis缓存'],
+                        ['egg-lru', 'Lru本地缓存'],
+                        ['egg-bookshelf', 'bookshelf ORM'],
+                        ['egg-sequelize', 'sequelize ORM'],
+                        ['egg-mq', '消息队列Rabbitmq'],
+                    ],
+                },
+            ],
             '/api/': [{
                 title: 'API',
                 collapsable: false,
@@ -97,6 +116,6 @@ module.exports = {
                     ['cluster-introduce', 'Cluster浅析'],
                 ],
             }],
-        }
+        },
     }
 }

@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[31],{168:function(t,n,e){"use strict";e.r(n);var o=e(18),s=Object(o.a)({},function(){var t=this.$createElement;return(this._self._c||t)("ContentSlotsDistributor",{attrs:{"slot-key":this.$parent.slotKey}})},[],!1,null,null,null);s.options.__file="mongodb.md";n.default=s.exports}}]);
