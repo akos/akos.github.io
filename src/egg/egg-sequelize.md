@@ -1,11 +1,11 @@
 ## 基于Egg框架模板的sequelize，推荐使用插件egg-sequelize
-### 前言
+## 前言
 
 ---
 > Sequelize是一个基于promise的关系型数据库Node.js ORM框架,当前支持MySQL、SQLite、PostgreSQL、Sql Server等数据库,它具有可靠的事务支持，关系，读取复制等功能
 ---
 
-### 一、Install
+## 一、Install
 
 ```
 $ npm i --save egg-sequelize
@@ -16,8 +16,8 @@ $ npm install --save pg pg-hstore # PostgreSQL
 $ npm install --save tedious # MSSQ
 
 ```
-### 二、Configuration
-### 插件引入
+## 二、Configuration
+#### 插件引入
 ```js
 // config/plugin.js文件中增加插件引入
 exports.sequelize = {
@@ -26,8 +26,9 @@ exports.sequelize = {
 }
 ```
 
-### sequelize配置设置
-#### 单客户端模式
+## 三、sequelize配置设置
+#### 3.1 单客户端模式
+##### 3.1.1服务配置-模式1
 ```js
 // 在config/config.default.js增加redis服务配置
 exports.sequelize = {
@@ -42,7 +43,9 @@ exports.sequelize = {
   // exclude: 'index.js', // ignore `app/${baseDir}/index.js` when load models, support glob and array
   // more sequelize options
 };
-或
+```
+##### 3.1.2服务配置-模式2
+```js
 exports.sequelize = {
   dialect: 'mysql', // support: mysql, mariadb, postgres, mssql
   connectionUri: 'mysql://root:@127.0.0.1:3306/test',
@@ -52,7 +55,8 @@ exports.sequelize = {
   // more sequelize options
 };
 ```
-#### 多客户端模式
+#### 3.2多客户端模式
+##### 3.2.1服务配置
 ```js
 // config/config.default.js
 exports.sequelize = {
@@ -73,10 +77,10 @@ exports.sequelize = {
 };
 ```
 
-```
-### 三、应用举例
+## 四、应用举例
 基于egg框架，egg-redis配置完毕后将引入redis，挂载到app对象redis，通过app.redis来进行redis操作。
-#### 单服务模式举例
+#### 4.1 单服务模式举例
+##### 4.1.1 Model模型层配置
 ```js
 // app/model/post.js
 
@@ -97,7 +101,7 @@ module.exports = app => {
   return Post;
 };
 ```
-
+##### 4.1.1 Controller层使用
 ```js
 // app/controller/post.js
 class PostController extends Controller {

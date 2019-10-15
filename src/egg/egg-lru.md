@@ -1,5 +1,5 @@
 ## 基于Egg框架模板的Lru缓存，推荐使用插件egg-lru
-### 前言
+## 前言
 ---
 > Lru缓存功能比较单一，主要利用app所在服务器内存设计，不需要像redis需要部署服务器。
 > 1. 优点：
@@ -12,12 +12,12 @@
 > 由于lru缓存仅在应用所在服务器，故不支持集群内多服务器的数据共享，仅能针对所在服务器接口范围内的性能优化。
 
 
-### 一、Install
+## 一、Install
 
 ```npm
 npm i egg-lru --save
 ```
-### 二、Configuration
+## 二、Configuration
 ### 插件引入
 ```js
 // config/plugin.js文件中增加插件引入
@@ -27,8 +27,9 @@ exports.lru = {
 };
 ```
 
-### 三、Lru配置设置
+## 三、Lru配置设置
 #### 3.1 单队列缓存模式
+##### 3.1.1配置
 ```js
 // 在config/config.default.js增加redis服务配置
 exports.lru = {
@@ -43,13 +44,14 @@ exports.lru = {
   agent: false,
 };
 ```
-#### 用法
+##### 3.1.2用法
 ```js
 // you can access to simple lru instance by using app.lru
 app.lru.set('test', 'aaa') ;
 app.lru.get('test');
 ```
 #### 3.2 多队列缓存模式
+##### 3.2.1配置
 ```js
 exports.lru = {
   clients: {
@@ -68,7 +70,7 @@ exports.lru = {
   agent: false,
 };
 ```
-#### 用法
+##### 3.2.2用法
 ```js
 const long = app.lru.get('long');
 long.set('test', 'aaa') ;
@@ -78,7 +80,7 @@ const moment = app.lru.get('moment');
 moment.set('test', 'aaa') ;
 moment.get('test');
 ```
-### 四、应用举例
+## 四、应用举例
 基于egg框架，egg-lru配置完毕后将引入lru，挂载到app对象lru，通过app.lru来进行lru缓存读取操作操作。
 #### 4.1 单队列模式举例
 ```js

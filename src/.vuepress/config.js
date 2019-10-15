@@ -78,7 +78,6 @@ module.exports = {
                         ['best-practice', '最佳实践'],
                     ],
                 }],
-            sidebarDepth: 0,
             '/egg/': [
                 {
                     title: 'Egg基础功能',
