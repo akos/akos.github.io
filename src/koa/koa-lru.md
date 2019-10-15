@@ -1,5 +1,5 @@
 ## 基于Koa框架模板的Lru缓存，推荐使用插件lru-cache
-### 前言
+## 前言
 ---
 > Lru缓存功能比较单一，主要利用app所在服务器内存设计，不需要像redis需要部署服务器。
 > 1. 优点：
@@ -12,12 +12,12 @@
 > 由于lru缓存仅在应用所在服务器，故不支持集群内多服务器的数据共享，仅能针对所在服务器接口范围内的性能优化。
 
 
-### 一、Install
+## 一、Install
 
 ```npm
 npm i lru-cache --save
 ```
-### 二、基础
+## 二、基础
 #### 2.1用法
 ```js
 var LRU = require("lru-cache")
@@ -46,7 +46,7 @@ assert.equal(cache.get({ a: 1 }), undefined)
 cache.reset()    // empty the cache
 ```
 
-### 三、应用举例
+## 三、应用举例
 
 #### 3.1 Lru举例封装
 下面使用直接lru-cache封装的方法store操作记录

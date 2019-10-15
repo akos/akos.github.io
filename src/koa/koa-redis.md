@@ -1,16 +1,16 @@
 ## 基于Koa框架模板的redis，推荐使用插件ioredis
-### 前言
+## 前言
 ---
 > Redis是一个开源的使用ANSIC语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库。
 Redis单线程服务，采用IO多路复用，以队列的模式对redis操作进行处理，内置连接处理寄存器，命令接收寄存器，命令响应寄存器，可处理百万级Qps。相比MemCache类型更为丰富，有string，hash，list，set，sort set等。目前，Redis是大部分程序员的首选缓存。
 --- 
 
-### 一、Install
+## 一、Install
 ioredis更多说明，请参看[官方文档](https://www.npmjs.com/package/ioredis)
 ```
 npm i ioredis --save
 ```
-### 二、基础
+## 二、基础
 #### 2.1用法
 ```js
 var Redis = require("ioredis");
@@ -50,7 +50,7 @@ new Redis({
 ```
 
 
-### 三、应用举例
+## 三、应用举例
 基于koa框架，redis配置需要写入config/default.js下(环境区分，参考配置章节)，可增加akos-redis插件或自行封装，将redis挂载到app对象redis，通过app.redis来进行redis操作。
 
 #### 3.1 Redis配置设置
