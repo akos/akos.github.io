@@ -73,7 +73,7 @@ module.exports = {
                     title: '进阶',
                     collapsable: false,
                     children: [
-                        ['local', 'NDP服务部署'],
+                        ['ndp', 'NDP服务部署'],
                         ['jsUseC', 'Js使用调用C/C++举例'],
                         ['best-practice', '最佳实践'],
                     ],

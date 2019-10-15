@@ -1,12 +1,12 @@
 ## node.js如何调用C/C++的方法
 在一些特定应用场景，高级程序员需要利用C/C++的特性来弥补node.js的不足，这时，我们需要利用C/C++
 来实现方法提供给js调用，本小节举例一个js调用C/C++可参考的例子
-### 首先需要安装node-gyp
+## 一、首先需要安装node-gyp
 [node-gyp](https://www.npmjs.com/package/node-gyp) 是用Node.js编写的跨平台命令行工具，用于为Node.js编译本机附加模块。它包含了Chromium团队先前使用的gyp项目的一个分支， 并且处理了构建平台中遇到的版本差异的痛苦。
 ```
 npm i -g node-gyp
 ```
-### 创建文件add.cc文件
+## 二、创建文件add.cc文件
 
 ```c
 #include <node.h>
@@ -45,13 +45,13 @@ void Init(Local<Object> exports) {
 } // namespace demo
 ```
 
-### 创建文件add.js
+## 三、创建文件add.js
 
 ```
 const addon = require('./build/Release/addon');
 console.log('This should be eight:', addon.add(3, 5));
 ```
-### 顺序执行执行命令
+## 四、顺序执行执行命令
 
 ```
 1.node-gyp configure 
@@ -59,7 +59,7 @@ console.log('This should be eight:', addon.add(3, 5));
 3.node add.js
 ```
 
-### 执行结果
+## 五、执行结果
 
 ```
 This should be eight: 8

@@ -1,20 +1,20 @@
-## nodeJs + Vusion项目基于ndp的构建与发布
-#### 前提:
-NDP部署保证构建机和应用服务能正常运行node.js。
-相关基本操作请阅读NDP文档 [链接](http://doc.hz.netease.com/display/CLDNDP)
-### 简述
+## akos基于ndp的构建与发布
+## 前言
+> NDP部署保证构建机和应用服务能正常运行node.js。
+> 相关基本操作请阅读[NDP文档](http://doc.hz.netease.com/display/CLDNDP)
+## 一、简述
     ndp主要功能有构建和发布。
     - 构建：完成代码生成，包括前端代码构建和后端代码构建，然后将生成的代码打包上传到nos上。
     - 发布：将从nos下载到的包进行解压，然后根据shell启动程序
-### 构建流程
+## 二、构建流程
 
--  构建配置
-1. 如图点击构建配置
+### 2.1 构建配置
+#### 2.1.1 如图点击构建配置
 <img src="http://filedoc.nos-eastchina1.126.net/f9640cc5470d866a55d0c4cee08f5dbe.jpg">
 1. 进入构建设置目录
 <img src="http://filedoc.nos-eastchina1.126.net/60aee23875141b79fbd48035e93b9f0b.jpg">
 
-### build.xml内容说明
+##### build.xml内容说明
 
     build.xml 可修改后使用。下列脚本，需要在构建机上放置服务本身需要的配置文件config
     下列为build.xml的配置内容，每个target为一个执行步骤。基本过程为：
@@ -26,7 +26,7 @@ NDP部署保证构建机和应用服务能正常运行node.js。
     5. target:config-copy 复制配置文件（不存放git仓库的），需要联系构建机管理员预先建立文件夹放置在构建机上
     6. target:deploy 设置target调用顺序
 
-### build.xml文件
+##### build.xml文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -84,7 +84,7 @@ NDP部署保证构建机和应用服务能正常运行node.js。
 	</target>
 </project>
 ```
-### bin/build
+##### bin/build
 vusion build 均可微调此文件后使用，build文件放置在工程根目录 bin/（可自定义，此文件与构建机基本配置无关，而是构建机node bin/build时需要调用）
 ```js
 #!/usr/bin/env node
@@ -149,17 +149,20 @@ if (shell.exec('vusion build').code)
 
 ```
 
-### 发布流程
-1. 如图点击发布配置
+## 三、发布流程
+### 3.1 如图点击发布配置
 <img src="http://filedoc.nos-eastchina1.126.net/8dd810ed41ef402b09de18e966e87f32.jpg" >
-2. 点击增加实例
+
+### 3.2 点击增加实例
+
 <img src="http://filedoc.nos-eastchina1.126.net/a2d9aab8b428a1ffb1ca467bfd12e5e5.jpg" >
-3. 配置登录项目服务器配置
+
+### 3.3 配置登录项目服务器配置并保存发布配置
 需要选择相应模板，目前node的ndp上生态还不完善，目前的几个模板均开放shell脚本执行，即sh start.sh，具体执行可在脚本中实现。
 <img src="http://filedoc.nos-eastchina1.126.net/a148bd736527dce6569c1b2d36b94c5a6.jpg" >
 <img src="http://filedoc.nos-eastchina1.126.net/ab29071995d04ac976d59a444529d321c.jpg" >
-4. 保存发布配置
-5. 服务器上 start.sh启动脚本举例
+
+### 3.4 服务器上 start.sh启动脚本举例
 
 ```
 #!/bin/sh
@@ -172,7 +175,7 @@ pm2 start app.json
 
 ```
 
-### 构建与发布操作
+## 四、构建与发布操作
 
 -  完成构建配置与发布配置后便可以进行发布了，如下图所示，先选择构建，构建成功后进行发布，构建完毕后，项目发布完毕。
  <img src="http://filedoc.nos-eastchina1.126.net/0c13ac6dcef82f7850909e3ace10ab27.jpg">
